@@ -1,0 +1,17 @@
+.wrapper {
+    position: fixed;
+    background: rgba(51, 51, 51, 0.50);
+    top: 72px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 400px;
+    height: 400px;
+    background: indianred;
+}
