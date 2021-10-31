@@ -1,44 +1,22 @@
 import React, {FC} from 'react'
 import {Table} from '../../../components/UI/Table/Table'
 import {packsModel} from './packsModel'
-import {deleteCardsPack, setSortCardsPackMethod, updateCardsPack} from '../../../store/reducers/packs-reducer'
+import {setSortCardsPackMethod} from '../../../store/reducers/packs-reducer'
 import {useDispatch} from 'react-redux'
 import {CardsPack} from '../../../api/packs-api'
-import {useModal} from '../../../hooks/useModal'
-import {AddPackModal} from './PacksModals/AddPackModal'
+import {useTypedSelector} from '../../../hooks/hooks'
 
 type PacksTableProps = {
     cardPacks: CardsPack[]
-    userID: string | undefined
 }
 
-export const PacksTable: FC<PacksTableProps> = ({cardPacks, userID}) => {
+export const PacksTable: FC<PacksTableProps> = ({cardPacks}) => {
     const dispatch = useDispatch()
-    const {isOpen, onToggle} = useModal()
-
-    const addPack = () => {
-        //dispatch(createCardsPack({cardsPack: {name, private: isPrivate}}))
-    }
-
-    const removePack = (id: string) => {
-        dispatch(deleteCardsPack({id}))
-    }
-
-    const updatePack = (id: string) => {
-        dispatch(updateCardsPack({cardsPack: {_id: id, name: ''}}))
-    }
+    const userID = useTypedSelector(state => state.auth.userInfo?._id)
 
     const packsSortMethod = (sortMethod: string) => {
         dispatch(setSortCardsPackMethod({sortCardPacksMethod: sortMethod}))
     }
 
-    const model = packsModel(addPack, removePack, updatePack, packsSortMethod, userID)
-
-    return (
-        <>
-            <Table model={model} data={cardPacks}/>
-            {/*<Modal open={isOpen} onClick={() => onToggle()}><h1>235236</h1></Modal>*/}
-            <AddPackModal addPack={addPack} open={isOpen} onToggle={onToggle}/>
-        </>
-    )
+    return <Table model={packsModel(packsSortMethod, userID)} data={cardPacks}/>
 }

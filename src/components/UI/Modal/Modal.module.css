@@ -8,10 +8,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 10;
+    cursor: pointer;
 }
 
 .container {
-    width: 400px;
-    height: 400px;
-    background: indianred;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+    min-width: 400px;
+    border-radius: 4px;
+    background: var(--darkLight);
+    cursor: default;
 }
