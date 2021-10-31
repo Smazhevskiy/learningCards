@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/learningCards/static/css/main.d4201fd6.chunk.css",
+    "main.js": "/learningCards/static/js/main.e794c5fa.chunk.js",
+    "main.js.map": "/learningCards/static/js/main.e794c5fa.chunk.js.map",
+    "runtime-main.js": "/learningCards/static/js/runtime-main.3fb6c987.js",
+    "runtime-main.js.map": "/learningCards/static/js/runtime-main.3fb6c987.js.map",
+    "static/css/2.7fe95f8e.chunk.css": "/learningCards/static/css/2.7fe95f8e.chunk.css",
+    "static/js/2.58f6bdec.chunk.js": "/learningCards/static/js/2.58f6bdec.chunk.js",
+    "static/js/2.58f6bdec.chunk.js.map": "/learningCards/static/js/2.58f6bdec.chunk.js.map",
+    "index.html": "/learningCards/index.html",
+    "static/css/2.7fe95f8e.chunk.css.map": "/learningCards/static/css/2.7fe95f8e.chunk.css.map",
+    "static/css/main.d4201fd6.chunk.css.map": "/learningCards/static/css/main.d4201fd6.chunk.css.map",
+    "static/js/2.58f6bdec.chunk.js.LICENSE.txt": "/learningCards/static/js/2.58f6bdec.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3fb6c987.js",
+    "static/css/2.7fe95f8e.chunk.css",
+    "static/js/2.58f6bdec.chunk.js",
+    "static/css/main.d4201fd6.chunk.css",
+    "static/js/main.e794c5fa.chunk.js"
+  ]
+}
