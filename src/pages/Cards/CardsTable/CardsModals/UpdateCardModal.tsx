@@ -1,24 +1,24 @@
 import React, {FC, useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {useModal} from '../../../../hooks/useModal'
-import {updateCardsPack} from '../../../../store/reducers/packs-reducer'
 import {Button} from '../../../../components/UI/Button/Button'
 import {Modal} from '../../../../components/UI/Modal/Modal'
 import {Input} from '../../../../components/UI/Input/Input'
+import {updateCard} from '../../../../store/reducers/cards-reducer'
 
 type UpdatePacksModalProps = {
-    packID: string
+    cardID: string
     buttonDisable: boolean
-    prevPackName: string
+    prevCardName: string
 }
 
-export const UpdatePacksModal: FC<UpdatePacksModalProps> = ({packID, buttonDisable, prevPackName}) => {
+export const UpdateCardModal: FC<UpdatePacksModalProps> = ({cardID, buttonDisable, prevCardName}) => {
     const dispatch = useDispatch()
     const {isOpen, onToggle} = useModal()
-    const [name, setName] = useState(prevPackName)
+    const [question, setQuestion] = useState(prevCardName)
 
     const updatePack = async () => {
-        await dispatch(updateCardsPack({cardsPack: {_id: packID, name}}))
+        await dispatch(updateCard({card: {_id: cardID, question}}))
         onToggle()
     }
 
@@ -27,12 +27,11 @@ export const UpdatePacksModal: FC<UpdatePacksModalProps> = ({packID, buttonDisab
             <Button onClick={() => onToggle()} disabled={buttonDisable}>Update</Button>
 
             <Modal open={isOpen} onClick={() => onToggle()}>
-                <label htmlFor={'packs-updatePack'}>
-                    New pack name
-                    <Input id={'packs-updatePack'}
-                           placeholder={'Enter new name...'}
-                           value={name}
-                           onChange={e => setName(e.currentTarget.value)}/>
+                <label htmlFor={'cards-updateCard'}>
+                    New card name
+                    <Input id={'cards-updateCard'}
+                           value={question}
+                           onChange={e => setQuestion(e.currentTarget.value)}/>
                 </label>
 
                 <Button onClick={updatePack}>Update</Button>

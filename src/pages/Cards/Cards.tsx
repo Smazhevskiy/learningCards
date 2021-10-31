@@ -44,19 +44,19 @@ export const Cards: FC = () => {
         <div>
             <h1 ref={paginationScrollTopRef}>Cards</h1>
 
-            {currentCardsPack ? <>
-                <div style={{margin: '40px 0'}}>
-                    <p>Pack owner: {currentCardsPack.user_name}</p>
-                    <p>Pack name: {currentCardsPack.name}</p>
-                </div>
+            {currentCardsPack && <div style={{margin: '40px 0'}}>
+				<p>Pack owner: {currentCardsPack.user_name}</p>
+				<p>Pack name: {currentCardsPack.name}</p>
+			</div>}
 
-                <CardsSearch/>
-                <CardsGradeRange minGrade={minGrade} maxGrade={maxGrade}/>
-                <CardsTable cards={cards} cardsPackID={id} isOwner={userID !== packUserId}/>
-                <CardsPagination cardsTotalCount={cardsTotalCount}
-                                 pageCount={pageCount}
-                                 page={page}/>
-            </> : <h2>Please choose one of Packs <Link to={PATH.PACKS}>here</Link></h2>}
+            {id ? <>
+				<CardsSearch/>
+				<CardsGradeRange minGrade={minGrade} maxGrade={maxGrade}/>
+				<CardsTable cards={cards} cardsPackID={id} isOwner={userID !== packUserId}/>
+				<CardsPagination cardsTotalCount={cardsTotalCount}
+				                 pageCount={pageCount}
+				                 page={page}/>
+			</> : <h2>Please choose one of Packs <Link to={PATH.PACKS}>here</Link></h2>}
         </div>
     )
 }

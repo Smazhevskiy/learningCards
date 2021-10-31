@@ -36,7 +36,7 @@ export const AddPackModal: FC = () => {
                 <Checkbox checked={isPrivate} onChange={e => setIsPrivate(e.currentTarget.checked)}>
                     Set to private
                 </Checkbox>
-                <Button onClick={addPack}>Send</Button>
+                <Button onClick={addPack}>Add</Button>
             </Modal>
         </>
     )

@@ -12,8 +12,8 @@ type ButtonProps = DefaultButtonPropsType & {
 export const Button: FC<ButtonProps> = props => {
     const isLoading = useTypedSelector(state => state.app.isLoading)
 
-    const {secondary, className, grouped, ...restProps} = props
+    const {secondary, className, grouped, disabled, ...restProps} = props
     const classNames = `${secondary ? s.secondary : ''}${grouped ? s.grouped : ''}${className ? className : ''}`
 
-    return <button className={classNames} disabled={isLoading} {...restProps}/>
+    return <button className={classNames} disabled={disabled || isLoading} {...restProps}/>
 }

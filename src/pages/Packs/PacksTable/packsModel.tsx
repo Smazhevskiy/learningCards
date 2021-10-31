@@ -1,4 +1,3 @@
-import {Button} from '../../../components/UI/Button/Button'
 import {PATH} from '../../../routes/routes'
 import {Link} from 'react-router-dom'
 import {TableModel} from '../../../components/UI/Table/Table'
@@ -7,9 +6,9 @@ import {Sort} from '../../../components/UI/Sort/Sort'
 import {AddPackModal} from './PacksModals/AddPackModal'
 import {UpdatePacksModal} from './PacksModals/UpdatePacksModal'
 import {DeletePackModal} from './PacksModals/DeletePackModal'
+import React from 'react'
 
-export const packsModel = (sort: (sort: string) => void,
-                           userID: string | undefined): TableModel[] => [
+export const packsModel = (sort: (sort: string) => void, userID: string | undefined): TableModel[] => [
     {
         header: index =>
             <th key={'name-title-' + index}>
@@ -46,7 +45,9 @@ export const packsModel = (sort: (sort: string) => void,
     },
     {
         header: index =>
-            <th key={'buttons-title-' + index}><AddPackModal/></th>,
+            <th key={'buttons-title-' + index}>
+                <AddPackModal/>
+            </th>,
         body: (item: CardsPack) =>
             <td key={'buttons-cell-' + item._id} className={'tablesButtonsCell'}>
                 <Link to={PATH.LEARN + '/' + item._id}>Learn</Link>
@@ -54,5 +55,4 @@ export const packsModel = (sort: (sort: string) => void,
                 <DeletePackModal packID={item._id} buttonDisable={item.user_id !== userID}/>
             </td>
     },
-
 ]
