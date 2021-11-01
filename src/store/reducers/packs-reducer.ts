@@ -46,11 +46,11 @@ export const initialState: PacksInitialState = {
     minCardsCount: 0,
     maxCardsCount: 0,
     page: 1,
-    pageCount: 10,
+    pageCount: 20,
     privatePacks: false,
     sortPacksMethod: undefined,
     currentCardsCount: [0, 0],
-    countPerPage: [10, 25, 50]
+    countPerPage: [20, 50, 100]
 }
 
 export const packsReducer = (state = initialState, action: PacksActionsTypes): PacksInitialState => {

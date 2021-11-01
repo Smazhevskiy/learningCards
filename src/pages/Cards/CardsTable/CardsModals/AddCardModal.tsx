@@ -22,11 +22,12 @@ export const AddCardModal: FC<AddCardModalProps> = ({buttonDisable}) => {
         await dispatch(createCard({card: {cardsPack_id: currentCardsPackID, question, answer}}))
         onToggle()
         setQuestion('')
+        setAnswer('')
     }
 
     return (
         <>
-            <Button onClick={() => onToggle()} disabled={buttonDisable}>Add</Button>
+            <Button style={{background:'mediumseagreen'}} onClick={() => onToggle()} disabled={buttonDisable}>Add new question</Button>
 
             <Modal open={isOpen} onClick={() => onToggle()}>
                 <label htmlFor={'cards-create-question'}>
@@ -43,7 +44,7 @@ export const AddCardModal: FC<AddCardModalProps> = ({buttonDisable}) => {
                            onChange={e => setAnswer(e.currentTarget.value)}/>
                 </label>
 
-                <Button onClick={addPack}>Add</Button>
+                <Button style={{background:'mediumseagreen'}} onClick={addPack}>Add</Button>
             </Modal>
         </>
     )

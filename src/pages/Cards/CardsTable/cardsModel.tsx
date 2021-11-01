@@ -5,6 +5,7 @@ import {AddCardModal} from './CardsModals/AddCardModal'
 import {DeleteCardModal} from './CardsModals/DeleteCardModal'
 import {UpdateCardModal} from './CardsModals/UpdateCardModal'
 
+
 export const cardsModel = (sort: (sort: string) => void, isOwner: boolean, sortMethod: string | undefined): TableModel[] => [
     {
         header: index =>
@@ -20,7 +21,7 @@ export const cardsModel = (sort: (sort: string) => void, isOwner: boolean, sortM
                 <Sort sortBy={'answer'} sortCallback={sort} sortMethod={sortMethod}>Answer</Sort>
             </th>,
         body: (item: Card) =>
-            <td key={'answer-cell-' + item._id}>{item.answer}</td>
+            <td style={{maxWidth: '200px'}} key={'answer-cell-' + item._id}>{item.answer}</td>
     },
     {
         header: index =>
@@ -28,7 +29,7 @@ export const cardsModel = (sort: (sort: string) => void, isOwner: boolean, sortM
                 <Sort sortBy={'grade'} sortCallback={sort} sortMethod={sortMethod}>Grade</Sort>
             </th>,
         body: (item: Card) =>
-            <td key={'grade-cell-' + item._id}>{item.grade}</td>
+            <td style={{color:'greenyellow'}} key={'grade-cell-' + item._id}>{item.grade.toFixed(1)}</td>
     },
     {
         header: index =>
@@ -41,7 +42,7 @@ export const cardsModel = (sort: (sort: string) => void, isOwner: boolean, sortM
     {
         header: index =>
             <th key={'updated-title-' + index}>
-                <Sort sortBy={'updated'} sortCallback={sort} sortMethod={sortMethod}>Updated</Sort>
+                <Sort sortBy={'updated'} sortCallback={sort} sortMethod={sortMethod}>Created</Sort>
             </th>,
         body: (item: Card) =>
             <td key={'updated-cell-' + item._id}>{item.updated.slice(5, 16)}</td>

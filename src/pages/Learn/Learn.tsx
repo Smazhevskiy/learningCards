@@ -67,16 +67,16 @@ export const Learn: FC = () => {
             </div>
 
             {isChecked && <>
-				<h3 style={{margin: '40px 0'}}>{card.answer}</h3>
-				<h2>Оцените свой ответ</h2>
-				<div className={s.gradeButtons}>
+                <h3 style={{margin: '40px 0'}}>{card.answer}</h3>
+                <h2>Оцените свой ответ</h2>
+                <div className={s.gradeButtons}>
                     {grades.map((grade, index) =>
                         <Button key={grade}
                                 onClick={() => gradeHandler(card._id, index + 1)}>
                             {grade}
                         </Button>)}
-				</div>
-			</>}
+                </div>
+            </>}
 
             <div style={{marginTop: 24}}>
                 <Link to={PATH.CARDS + '/' + id}>Show stats</Link>

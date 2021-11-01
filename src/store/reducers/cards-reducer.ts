@@ -79,6 +79,7 @@ export const cardsReducer = (state = initialState, action: CardsActions): CardsI
         case CARDS_ACTIONS_TYPES.SET_CURRENT_GRADE:
             return {...state, currentGrade: [...action.payload.values]}
 
+
         default:
             return state
     }

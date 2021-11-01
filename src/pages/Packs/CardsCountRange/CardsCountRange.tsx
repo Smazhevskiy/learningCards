@@ -32,11 +32,13 @@ export const CardsCountRange: FC<CardsCountRangeProps> = ({minCardsCount, maxCar
     }, [minCardsCount, maxCardsCount])
 
     return (
-        <Range value={rangeValues}
-               marks={rangeMarks}
-               min={minCardsCount}
-               max={maxCardsCount}
-               onChange={onRangeChangeHandler}
-               style={{margin: '32px 8px 48px 8px', width: 'inherit'}}/>
+        <Range
+            step={1}
+            value={rangeValues}
+            marks={rangeMarks}
+            min={minCardsCount}
+            max={maxCardsCount}
+            onChange={onRangeChangeHandler}
+            style={{margin: '32px 8px 48px 8px', width: 'inherit'}}/>
     )
 }

@@ -2,11 +2,12 @@
     position: fixed;
     bottom: 24px;
     right: 24px;
-    color: var(--primary);
     padding-top: 28px;
     transition: all .3s ease-out;
     background: none;
-    font-size: 18px;
+    font-size: 24px;
+    color: #ffffff;
+
 }
 
 .scrollButton:before {
@@ -20,8 +21,8 @@
 }
 
 .scrollButton:hover {
-    color: var(--light);
-    font-size: 20px;
+    color: #3f90de;
+    font-size: 28px;
 }
 
 .scrollButton:hover:before {

@@ -17,10 +17,11 @@ export const PrivatePacksToggle: FC<PrivatePacksToggleProps> = ({privatePacks}) 
         setIsPrivatePacks(e.currentTarget.checked)
     }
 
+
     return (
         <Checkbox checked={isPrivatePacks}
                   onChange={onPrivateChangeHandler}>
-            Show only private packs?
+            Show my packs
         </Checkbox>
     )
 }

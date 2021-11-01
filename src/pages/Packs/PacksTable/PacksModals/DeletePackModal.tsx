@@ -20,11 +20,11 @@ export const DeletePackModal: FC<DeletePackModalProps> = ({packID, buttonDisable
 
     return (
         <>
-            <Button onClick={() => onToggle()} disabled={buttonDisable}>Delete</Button>
+            <Button style={{background:'orangered'}} onClick={() => onToggle()} disabled={buttonDisable}>Delete</Button>
 
             <Modal open={isOpen} onClick={() => onToggle()}>
                 <Button onClick={deletePack} secondary style={{marginBottom: 24}}>Delete</Button>
-                <Button onClick={() => onToggle()}>Cancel</Button>
+                <Button  onClick={() => onToggle()}>Cancel</Button>
             </Modal>
         </>
     )

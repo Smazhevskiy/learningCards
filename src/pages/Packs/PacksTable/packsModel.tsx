@@ -38,7 +38,7 @@ export const packsModel = (sort: (sort: string) => void, userID: string | undefi
     {
         header: index =>
             <th key={'updated-title-' + index}>
-                <Sort sortBy={'updated'} sortCallback={sort} sortMethod={sortMethod}>Updated</Sort>
+                <Sort sortBy={'updated'} sortCallback={sort} sortMethod={sortMethod}>Created</Sort>
             </th>,
         body: (item: CardsPack) =>
             <td key={'updated-cell-' + item._id}>{item.updated.slice(5, 16)}</td>
@@ -50,9 +50,9 @@ export const packsModel = (sort: (sort: string) => void, userID: string | undefi
             </th>,
         body: (item: CardsPack) =>
             <td key={'buttons-cell-' + item._id} className={'tablesButtonsCell'}>
-                <Link to={PATH.LEARN + '/' + item._id}>Learn</Link>
+                <Link style={{color:'mediumseagreen'}} to={PATH.LEARN + '/' + item._id}>Learn</Link>
                 <UpdatePacksModal packID={item._id} buttonDisable={item.user_id !== userID} prevPackName={item.name}/>
-                <DeletePackModal packID={item._id} buttonDisable={item.user_id !== userID}/>
+                <DeletePackModal  packID={item._id} buttonDisable={item.user_id !== userID}/>
             </td>
     },
 ]
