@@ -9,9 +9,10 @@ type CardsPaginationProps = {
     cardsTotalCount: number
     pageCount: number
     page: number
+    countPerPage: number[]
 }
 
-export const CardsPagination: FC<CardsPaginationProps> = ({cardsTotalCount, pageCount, page}) => {
+export const CardsPagination: FC<CardsPaginationProps> = ({cardsTotalCount, pageCount, page, countPerPage}) => {
     const dispatch = useDispatch()
 
     const onPageChangeHandler = (page: number) => dispatch(setCardsCurrentPage({page}))
@@ -25,7 +26,7 @@ export const CardsPagination: FC<CardsPaginationProps> = ({cardsTotalCount, page
                         onChange={onPageChangeHandler}/>
             <div>
                 <span style={{paddingRight: 16}}> Show on page:</span>
-                <Select options={[5, 20, 50]} onChangeOption={onSelectChangeHandler}/>
+                <Select options={countPerPage} onChangeOption={onSelectChangeHandler}/>
             </div>
         </div>
     )

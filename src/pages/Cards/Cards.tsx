@@ -21,6 +21,8 @@ export const Cards: FC = () => {
         maxGrade,
         sortCardsMethod,
         packUserId,
+        currentGrade,
+        countPerPage
     } = useTypedSelector(state => state.cards)
     const cardPacks = useTypedSelector(state => state.packs.cardPacks)
     const userID = useTypedSelector(state => state.auth.userInfo?._id)
@@ -34,7 +36,7 @@ export const Cards: FC = () => {
 
     useEffect(() => {
         id && dispatch(fetchCards())
-    }, [page, pageCount, minGrade, maxGrade, sortCardsMethod])
+    }, [page, pageCount, currentGrade, sortCardsMethod])
 
     useEffect(() => {
         paginationScrollTopRef.current?.scrollIntoView({behavior: 'smooth'})
@@ -52,10 +54,14 @@ export const Cards: FC = () => {
             {id ? <>
 				<CardsSearch/>
 				<CardsGradeRange minGrade={minGrade} maxGrade={maxGrade}/>
+
+                <Link to={PATH.LEARN + '/' + id}>Learn this cards</Link>
 				<CardsTable cards={cards} cardsPackID={id} isOwner={userID !== packUserId}/>
+
 				<CardsPagination cardsTotalCount={cardsTotalCount}
 				                 pageCount={pageCount}
-				                 page={page}/>
+				                 page={page}
+                                 countPerPage={countPerPage}/>
 			</> : <h2>Please choose one of Packs <Link to={PATH.PACKS}>here</Link></h2>}
         </div>
     )

@@ -13,10 +13,11 @@ type PacksTableProps = {
 export const PacksTable: FC<PacksTableProps> = ({cardPacks}) => {
     const dispatch = useDispatch()
     const userID = useTypedSelector(state => state.auth.userInfo?._id)
+    const sortPacksMethod = useTypedSelector(state => state.packs.sortPacksMethod)
 
-    const packsSortMethod = (sortMethod: string) => {
+    const changePacksSortMethod = (sortMethod: string) => {
         dispatch(setSortCardsPackMethod({sortCardPacksMethod: sortMethod}))
     }
 
-    return <Table model={packsModel(packsSortMethod, userID)} data={cardPacks}/>
+    return <Table model={packsModel(changePacksSortMethod, userID, sortPacksMethod)} data={cardPacks}/>
 }

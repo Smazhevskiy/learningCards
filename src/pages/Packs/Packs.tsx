@@ -21,13 +21,15 @@ export const Packs: FC = () => {
         maxCardsCount,
         cardPacks,
         privatePacks,
-        sortPacksMethod
+        sortPacksMethod,
+        currentCardsCount,
+        countPerPage
     } = useTypedSelector(state => state.packs)
     const paginationScrollTopRef = useRef<HTMLHeadingElement>(null)
 
     useEffect(() => {
         dispatch(fetchCardPacks())
-    }, [page, pageCount, minCardsCount, maxCardsCount, privatePacks, sortPacksMethod])
+    }, [page, pageCount, currentCardsCount, privatePacks, sortPacksMethod])
 
     useEffect(() => {
         paginationScrollTopRef.current?.scrollIntoView({behavior: 'smooth'})
@@ -39,12 +41,13 @@ export const Packs: FC = () => {
         <div>
             <h1 ref={paginationScrollTopRef}>Packs</h1>
             <PacksSearch/>
-            <CardsCountRange minCardsCount={minCardsCount} maxCardsCount={maxCardsCount}/>
+            <CardsCountRange minCardsCount={minCardsCount} maxCardsCount={maxCardsCount} currentCardsCount={currentCardsCount}/>
             <PrivatePacksToggle privatePacks={privatePacks}/>
             <PacksTable cardPacks={cardPacks}/>
             <PacksPagination totalCount={cardPacksTotalCount}
-                             countPerPage={pageCount}
-                             currentPage={page}/>
+                             pageCount={pageCount}
+                             currentPage={page}
+                             countPerPage={countPerPage}/>
         </div>
     )
 }

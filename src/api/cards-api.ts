@@ -57,7 +57,7 @@ export type UpdateCardData = {
     card: {
         _id: string
         question?: string
-        comments?: string
+        answer?: string
     }
 }
 
@@ -67,7 +67,7 @@ export type DeleteCardData = {
 
 export type GradeData = {
     card_id: string
-    grade: 1 | 2 | 3 | 4 | 5
+    grade: number
 }
 
 export type GradeResponse = {

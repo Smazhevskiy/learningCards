@@ -1,7 +1,7 @@
-import React, {FC, useCallback, useState} from 'react'
+import React, {FC, useCallback, useEffect, useState} from 'react'
 import {Range} from 'rc-slider'
 import _ from 'lodash'
-import {setMinMaxGrade} from '../../../store/reducers/cards-reducer'
+import {setCurrentGrade, setMinMaxGrade} from '../../../store/reducers/cards-reducer'
 import {useDispatch} from 'react-redux'
 
 type CardsGradeRangeProps = {
@@ -12,9 +12,10 @@ type CardsGradeRangeProps = {
 export const CardsGradeRange: FC<CardsGradeRangeProps> = ({minGrade, maxGrade}) => {
     const dispatch = useDispatch()
     const [rangeValues, setRangeValues] = useState([minGrade, maxGrade])
+
     const rangeMarks = {
-        0: {style: {fontSize: 16}, label: rangeValues[0]},
-        6: {style: {fontSize: 16}, label: rangeValues[1]}
+        [minGrade]: {style: {fontSize: 16}, label: minGrade},
+        [maxGrade]: {style: {fontSize: 16}, label: maxGrade}
     }
 
     const onRangeChangeHandler = (values: number[]) => {
@@ -22,12 +23,17 @@ export const CardsGradeRange: FC<CardsGradeRangeProps> = ({minGrade, maxGrade}) 
         debouncedRange(values)
     }
 
-    const debouncedRange = useCallback(_.debounce(values => dispatch(setMinMaxGrade({values: values})), 500), [])
+    const debouncedRange = useCallback(_.debounce(values => dispatch(setCurrentGrade({values: values})), 500), [])
+
+    useEffect(() => {
+        setRangeValues([minGrade, maxGrade])
+    }, [minGrade, maxGrade])
 
     return (
         <Range value={rangeValues}
                marks={rangeMarks}
-               max={6}
+               min={minGrade}
+               max={maxGrade}
                onChange={onRangeChangeHandler}
                style={{margin: '32px 8px 48px 8px', width: 'inherit'}}/>
     )

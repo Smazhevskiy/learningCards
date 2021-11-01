@@ -3,7 +3,7 @@ import {
     cardsAPI,
     CardsResponse,
     DeleteCardData,
-    GetCardsQueryParams,
+    GetCardsQueryParams, GradeData,
     NewCardData,
     UpdateCardData
 } from '../../api/cards-api'
@@ -18,6 +18,7 @@ enum CARDS_ACTIONS_TYPES {
     SET_CARDS_COUNT_ON_PAGE = 'CARDS/SET_CARDS_COUNT_ON_PAGE',
     SET_CARDS_TOTAL_COUNT = 'CARDS/SET_CARDS_TOTAL_COUNT',
     SET_MIN_MAX_GRADE = 'CARDS/SET_MIN_MAX_GRADE',
+    SET_CURRENT_GRADE = 'CARDS/SET_CURRENT_GRADE',
     SET_SORT_CARDS_METHOD = 'CARDS/SET_SORT_CARDS_METHOD',
 }
 
@@ -29,22 +30,27 @@ type CardsActions =
     | ReturnType<typeof setCardsTotalCount>
     | ReturnType<typeof setMinMaxGrade>
     | ReturnType<typeof setSortCardsMethod>
+    | ReturnType<typeof setCurrentGrade>
 
 export type CardsInitialState = CardsResponse & {
     currentCardsPackID: string
     sortCardsMethod: string | undefined
+    currentGrade: number[]
+    countPerPage: number[]
 }
 
 const initialState: CardsInitialState = {
     cards: [],
     page: 1,
-    pageCount: 5,
+    pageCount: 10,
     cardsTotalCount: 0,
     packUserId: '',
     minGrade: 0,
-    maxGrade: 6,
+    maxGrade: 0,
     currentCardsPackID: '',
-    sortCardsMethod: undefined
+    sortCardsMethod: undefined,
+    currentGrade: [0, 0],
+    countPerPage: [10, 25, 50]
 }
 
 export const cardsReducer = (state = initialState, action: CardsActions): CardsInitialState => {
@@ -69,6 +75,9 @@ export const cardsReducer = (state = initialState, action: CardsActions): CardsI
 
         case CARDS_ACTIONS_TYPES.SET_SORT_CARDS_METHOD:
             return {...state, sortCardsMethod: action.payload.sortCarsMethod, page: 1}
+
+        case CARDS_ACTIONS_TYPES.SET_CURRENT_GRADE:
+            return {...state, currentGrade: [...action.payload.values]}
 
         default:
             return state
@@ -105,6 +114,11 @@ export const setMinMaxGrade = (payload: { values: number[] }) => ({
     payload
 } as const)
 
+export const setCurrentGrade = (payload: { values: number[] }) => ({
+    type: CARDS_ACTIONS_TYPES.SET_CURRENT_GRADE,
+    payload
+} as const)
+
 export const setSortCardsMethod = (payload: { sortCarsMethod: string }) => ({
     type: CARDS_ACTIONS_TYPES.SET_SORT_CARDS_METHOD, payload
 } as const)
@@ -115,11 +129,11 @@ export const fetchCards = (payload?: GetCardsQueryParams) => async (dispatch: Ap
     try {
         dispatch(setAppIsLoading(true))
         const response = await cardsAPI.getCards({
-            cardsPack_id: cards.currentCardsPackID,
+            cardsPack_id: cards.currentCardsPackID || payload?.cardsPack_id,
             page: cards.page,
             pageCount: cards.pageCount,
-            min: cards.minGrade,
-            max: cards.maxGrade,
+            min: cards.currentGrade[0],
+            max: cards.currentGrade[1],
             cardQuestion: payload?.cardQuestion || undefined,
             cardAnswer: payload?.cardAnswer || undefined,
             sortCards: cards.sortCardsMethod
@@ -161,6 +175,17 @@ export const updateCard = (payload: UpdateCardData): ThunkType => async dispatch
         dispatch(setAppIsLoading(true))
         await cardsAPI.updateCard(payload)
         await dispatch(fetchCards())
+    } catch (e) {
+        errorsHandler(e, dispatch)
+    } finally {
+        dispatch(setAppIsLoading(false))
+    }
+}
+
+export const gradeAnswer = (payload: GradeData): ThunkType => async dispatch => {
+    try {
+        dispatch(setAppIsLoading(true))
+        await cardsAPI.grade(payload)
     } catch (e) {
         errorsHandler(e, dispatch)
     } finally {

@@ -8,11 +8,11 @@ import {UpdatePacksModal} from './PacksModals/UpdatePacksModal'
 import {DeletePackModal} from './PacksModals/DeletePackModal'
 import React from 'react'
 
-export const packsModel = (sort: (sort: string) => void, userID: string | undefined): TableModel[] => [
+export const packsModel = (sort: (sort: string) => void, userID: string | undefined, sortMethod: string | undefined): TableModel[] => [
     {
         header: index =>
             <th key={'name-title-' + index}>
-                <Sort sortBy={'name'} sortCallback={sort}>Pack Name</Sort>
+                <Sort sortBy={'name'} sortCallback={sort} sortMethod={sortMethod}>Pack Name</Sort>
             </th>,
         body: (item: CardsPack) =>
             <td key={'name-cell-' + item._id}>
@@ -22,7 +22,7 @@ export const packsModel = (sort: (sort: string) => void, userID: string | undefi
     {
         header: index =>
             <th key={'userName-title-' + index}>
-                <Sort sortBy={'user_name'} sortCallback={sort}>User Name</Sort>
+                <Sort sortBy={'user_name'} sortCallback={sort} sortMethod={sortMethod}>User Name</Sort>
             </th>,
         body: (item: CardsPack) =>
             <td key={'name-cell-' + item.user_name}>{item.user_name}</td>
@@ -30,7 +30,7 @@ export const packsModel = (sort: (sort: string) => void, userID: string | undefi
     {
         header: index =>
             <th key={'cardsCount-title-' + index}>
-                <Sort sortBy={'cardsCount'} sortCallback={sort}>Cards count</Sort>
+                <Sort sortBy={'cardsCount'} sortCallback={sort} sortMethod={sortMethod}>Cards count</Sort>
             </th>,
         body: (item: CardsPack) =>
             <td key={'cardsCount-cell-' + item._id}>{item.cardsCount}</td>
@@ -38,7 +38,7 @@ export const packsModel = (sort: (sort: string) => void, userID: string | undefi
     {
         header: index =>
             <th key={'updated-title-' + index}>
-                <Sort sortBy={'updated'} sortCallback={sort}>Updated</Sort>
+                <Sort sortBy={'updated'} sortCallback={sort} sortMethod={sortMethod}>Updated</Sort>
             </th>,
         body: (item: CardsPack) =>
             <td key={'updated-cell-' + item._id}>{item.updated.slice(5, 16)}</td>

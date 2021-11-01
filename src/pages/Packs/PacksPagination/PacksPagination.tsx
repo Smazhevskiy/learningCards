@@ -7,12 +7,13 @@ import {useDispatch} from 'react-redux'
 
 type PacksPaginationProps = {
     totalCount: number
-    countPerPage: number
+    pageCount: number
     currentPage: number
+    countPerPage: number[]
 }
 
 export const PacksPagination: FC<PacksPaginationProps> = props => {
-    const {totalCount, countPerPage, currentPage} = props
+    const {totalCount, pageCount, currentPage, countPerPage} = props
     const dispatch = useDispatch()
 
     const onPageChangeHandler = (page: number) => dispatch(setPacksCurrentPage({page}))
@@ -21,12 +22,12 @@ export const PacksPagination: FC<PacksPaginationProps> = props => {
     return (
         <div className={s.paginationContainer}>
             <Pagination totalCount={totalCount}
-                        countPerPage={countPerPage}
+                        countPerPage={pageCount}
                         currentPage={currentPage}
                         onChange={onPageChangeHandler}/>
             <div>
                 <span style={{paddingRight: 16}}> Show on page:</span>
-                <Select options={[5, 20, 50]} onChangeOption={onSelectChangeHandler}/>
+                <Select options={countPerPage} onChangeOption={onSelectChangeHandler}/>
             </div>
         </div>
     )
