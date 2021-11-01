@@ -11,7 +11,6 @@ type DeletePackModalProps = {
 }
 
 export const DeletePackModal: FC<DeletePackModalProps> = memo( ({packID, buttonDisable}) => {
-    console.log('del pack modal render')
     const dispatch = useDispatch()
     const {isOpen, onToggle} = useModal()
 

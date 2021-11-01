@@ -1,4 +1,4 @@
-import React, {ChangeEvent, FC, useState} from 'react'
+import React, {ChangeEvent, FC, useCallback, useState} from 'react'
 import {Input} from '../../../components/UI/Input/Input'
 import debounce from 'lodash.debounce'
 import {fetchCards} from '../../../store/reducers/cards-reducer'
@@ -19,8 +19,10 @@ export const CardsSearch: FC = () => {
         debouncedAnswerSearch(e.currentTarget.value)
     }
 
-    const debouncedQuestionSearch = debounce(value => dispatch(fetchCards({cardQuestion: value})), 500)//Todo useCallback?
-    const debouncedAnswerSearch = debounce(value => dispatch(fetchCards({cardAnswer: value})), 500) //Todo useCallback?
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedQuestionSearch = useCallback(debounce(value => dispatch(fetchCards({cardQuestion: value})), 500), [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedAnswerSearch = useCallback(debounce(value => dispatch(fetchCards({cardAnswer: value})), 500), [])
     return (
         <>
             <label htmlFor="cards-question-search">

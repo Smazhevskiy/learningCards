@@ -11,7 +11,6 @@ import {CardsCountRange} from './CardsCountRange/CardsCountRange'
 import {PacksTable} from './PacksTable/PacksTable'
 
 export const Packs: FC =  memo( () => {
-    console.log('packs component render')
     const dispatch = useDispatch()
     const isLoggedIn = useTypedSelector(state => state.auth.isLoggedIn)
     const {
@@ -23,14 +22,15 @@ export const Packs: FC =  memo( () => {
         cardPacks,
         privatePacks,
         currentCardsCount,
-        countPerPage
+        countPerPage,
+        sortPacksMethod
     } = useTypedSelector(state => state.packs)
 
     const paginationScrollTopRef = useRef<HTMLHeadingElement>(null)
 
     useEffect(() => {
         dispatch(fetchCardPacks())
-    }, [dispatch]) // TODO page, pageCount, currentCardsCount, privatePacks, sortPacksMethod
+    }, [page, pageCount, currentCardsCount, privatePacks, sortPacksMethod, dispatch])
 
 
 

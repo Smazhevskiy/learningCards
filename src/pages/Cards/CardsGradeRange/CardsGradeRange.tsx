@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useState} from 'react'
+import React, {FC, useCallback, useEffect, useState} from 'react'
 import {Range} from 'rc-slider'
 import _ from 'lodash'
 import {setCurrentGrade} from '../../../store/reducers/cards-reducer'
@@ -23,7 +23,8 @@ export const CardsGradeRange: FC<CardsGradeRangeProps> = ({minGrade, maxGrade}) 
         debouncedRange(values)
     }
 
-    const debouncedRange = _.debounce(values => dispatch(setCurrentGrade({values: values})), 500) //TODO useCallback? warning in console
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    const debouncedRange = useCallback( _.debounce(values => dispatch(setCurrentGrade({values: values})), 500),[])
 
     useEffect(() => {
         setRangeValues([minGrade, maxGrade])

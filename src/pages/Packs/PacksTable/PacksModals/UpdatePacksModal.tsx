@@ -13,13 +13,11 @@ type UpdatePacksModalProps = {
 }
 
 export const UpdatePacksModal: FC<UpdatePacksModalProps> = memo( ({packID, buttonDisable, prevPackName}) => {
-    console.log('apd Modal Render')
     const dispatch = useDispatch()
     const {isOpen, onToggle} = useModal()
     const [name, setName] = useState(prevPackName)
 
     const updatePack = async () => {
-        console.log('upd pack callback is call')
         await dispatch(updateCardsPack({cardsPack: {_id: packID, name}}))
         onToggle()
     }

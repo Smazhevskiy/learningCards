@@ -8,7 +8,6 @@ import {Alerts} from '../components/UI/Alerts/Alerts'
 import {ScrollToTop} from '../components/UI/ScrollToTop/ScrollToTop'
 
 export const App: FC = () => {
-    console.log('app render')
     return (
         <HashRouter>
             <Provider store={store}>
