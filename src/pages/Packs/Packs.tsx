@@ -40,10 +40,13 @@ export const Packs: FC = () => {
     return (
         <div>
             <h1 ref={paginationScrollTopRef}>Packs</h1>
+
             <PacksSearch/>
             <CardsCountRange minCardsCount={minCardsCount} maxCardsCount={maxCardsCount} currentCardsCount={currentCardsCount}/>
             <PrivatePacksToggle privatePacks={privatePacks}/>
+
             <PacksTable cardPacks={cardPacks}/>
+
             <PacksPagination totalCount={cardPacksTotalCount}
                              pageCount={pageCount}
                              currentPage={page}

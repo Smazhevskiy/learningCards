@@ -2,7 +2,6 @@ import React, {ChangeEvent, FC, useState} from 'react'
 import {Checkbox} from '../../../components/UI/Checkbox/Checkbox'
 import {setCurrentCardsCount, setPrivatePacks} from '../../../store/reducers/packs-reducer'
 import {useDispatch} from 'react-redux'
-import {useTypedSelector} from '../../../hooks/hooks'
 
 type PrivatePacksToggleProps = {
     privatePacks: boolean

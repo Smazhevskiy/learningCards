@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {useModal} from '../../../../hooks/useModal'
 import {Button} from '../../../../components/UI/Button/Button'
@@ -23,6 +23,11 @@ export const UpdateCardModal: FC<UpdatePacksModalProps> = ({cardID, buttonDisabl
         await dispatch(updateCard({card: {_id: cardID, question, answer}}))
         onToggle()
     }
+
+    useEffect(() => {
+        setQuestion(prevQuestion)
+        setAnswer(prevAnswer)
+    }, [isOpen])
 
     return (
         <>

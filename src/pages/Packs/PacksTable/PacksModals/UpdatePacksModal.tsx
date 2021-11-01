@@ -1,4 +1,4 @@
-import React, {FC, useState} from 'react'
+import React, {FC, useEffect, useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {useModal} from '../../../../hooks/useModal'
 import {updateCardsPack} from '../../../../store/reducers/packs-reducer'
@@ -21,6 +21,10 @@ export const UpdatePacksModal: FC<UpdatePacksModalProps> = ({packID, buttonDisab
         await dispatch(updateCardsPack({cardsPack: {_id: packID, name}}))
         onToggle()
     }
+
+    useEffect(() => {
+        setName(prevPackName)
+    }, [isOpen])
 
     return (
         <>

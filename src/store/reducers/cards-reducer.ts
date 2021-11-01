@@ -125,13 +125,12 @@ export const setSortCardsMethod = (payload: { sortCarsMethod: string }) => ({
 
 export const fetchCards = (payload?: GetCardsQueryParams) => async (dispatch: AppDispatch, getState: () => RootState) => {
     const cards = getState().cards
-
     try {
         dispatch(setAppIsLoading(true))
         const response = await cardsAPI.getCards({
             cardsPack_id: cards.currentCardsPackID || payload?.cardsPack_id,
             page: cards.page,
-            pageCount: cards.pageCount,
+            pageCount: payload?.pageCount || cards.pageCount,
             min: cards.currentGrade[0],
             max: cards.currentGrade[1],
             cardQuestion: payload?.cardQuestion || undefined,

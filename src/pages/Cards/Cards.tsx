@@ -1,7 +1,7 @@
 import React, {FC, useEffect, useRef} from 'react'
 import {useDispatch} from 'react-redux'
-import {fetchCards, setCurrentCardsPackID} from '../../store/reducers/cards-reducer'
-import {Link, useParams} from 'react-router-dom'
+import {fetchCards, setCardsCountOnPage, setCurrentCardsPackID} from '../../store/reducers/cards-reducer'
+import {Link, Redirect, useParams} from 'react-router-dom'
 import {useTypedSelector} from '../../hooks/hooks'
 import {PATH} from '../../routes/routes'
 import {CardsTable} from './CardsTable/CardsTable'
@@ -45,24 +45,26 @@ export const Cards: FC = () => {
     return (
         <div>
             <h1 ref={paginationScrollTopRef}>Cards</h1>
-
             {currentCardsPack && <div style={{margin: '40px 0'}}>
 				<p>Pack owner: {currentCardsPack.user_name}</p>
 				<p>Pack name: {currentCardsPack.name}</p>
 			</div>}
 
             {id ? <>
-				<CardsSearch/>
-				<CardsGradeRange minGrade={minGrade} maxGrade={maxGrade}/>
+                <CardsSearch/>
+                <CardsGradeRange minGrade={minGrade} maxGrade={maxGrade}/>
 
-                <Link to={PATH.LEARN + '/' + id}>Learn this cards</Link>
-				<CardsTable cards={cards} cardsPackID={id} isOwner={userID !== packUserId}/>
+                <div style={{marginBottom: 24}}>
+                    <Link to={PATH.LEARN + '/' + id}>Learn this cards</Link>
+                </div>
 
-				<CardsPagination cardsTotalCount={cardsTotalCount}
-				                 pageCount={pageCount}
-				                 page={page}
+                <CardsTable cards={cards} cardsPackID={id} isOwner={userID !== packUserId}/>
+
+                <CardsPagination cardsTotalCount={cardsTotalCount}
+                                 pageCount={pageCount}
+                                 page={page}
                                  countPerPage={countPerPage}/>
-			</> : <h2>Please choose one of Packs <Link to={PATH.PACKS}>here</Link></h2>}
+            </> : <h2>Please choose one of Packs <Link to={PATH.PACKS}>here</Link></h2>}
         </div>
     )
 }
