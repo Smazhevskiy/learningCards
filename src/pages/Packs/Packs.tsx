@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useRef} from 'react'
+import React, {FC, memo, useEffect, useRef} from 'react'
 import {useDispatch} from 'react-redux'
 import {fetchCardPacks} from '../../store/reducers/packs-reducer'
 import {useTypedSelector} from '../../hooks/hooks'
@@ -10,7 +10,8 @@ import {PacksSearch} from './PacksSearch/PacksSearch'
 import {CardsCountRange} from './CardsCountRange/CardsCountRange'
 import {PacksTable} from './PacksTable/PacksTable'
 
-export const Packs: FC = () => {
+export const Packs: FC =  memo( () => {
+    console.log('packs component render')
     const dispatch = useDispatch()
     const isLoggedIn = useTypedSelector(state => state.auth.isLoggedIn)
     const {
@@ -21,15 +22,17 @@ export const Packs: FC = () => {
         maxCardsCount,
         cardPacks,
         privatePacks,
-        sortPacksMethod,
         currentCardsCount,
         countPerPage
     } = useTypedSelector(state => state.packs)
+
     const paginationScrollTopRef = useRef<HTMLHeadingElement>(null)
 
     useEffect(() => {
         dispatch(fetchCardPacks())
-    }, [page, pageCount, currentCardsCount, privatePacks, sortPacksMethod])
+    }, [dispatch]) // TODO page, pageCount, currentCardsCount, privatePacks, sortPacksMethod
+
+
 
     useEffect(() => {
         paginationScrollTopRef.current?.scrollIntoView({behavior: 'smooth'})
@@ -53,4 +56,4 @@ export const Packs: FC = () => {
                              countPerPage={countPerPage}/>
         </div>
     )
-}
+})

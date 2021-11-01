@@ -1,4 +1,4 @@
-import React, {FC} from 'react'
+import React, {FC, memo} from 'react'
 import {useDispatch} from 'react-redux'
 import {useModal} from '../../../../hooks/useModal'
 import {deleteCardsPack} from '../../../../store/reducers/packs-reducer'
@@ -10,7 +10,8 @@ type DeletePackModalProps = {
     buttonDisable: boolean
 }
 
-export const DeletePackModal: FC<DeletePackModalProps> = ({packID, buttonDisable}) => {
+export const DeletePackModal: FC<DeletePackModalProps> = memo( ({packID, buttonDisable}) => {
+    console.log('del pack modal render')
     const dispatch = useDispatch()
     const {isOpen, onToggle} = useModal()
 
@@ -28,4 +29,4 @@ export const DeletePackModal: FC<DeletePackModalProps> = ({packID, buttonDisable
             </Modal>
         </>
     )
-}
+})

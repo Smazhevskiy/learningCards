@@ -38,7 +38,7 @@ export const AddCardModal: FC<AddCardModalProps> = ({buttonDisable}) => {
                 </label>
 
                 <label htmlFor={'cards-create-answer'}>
-                    Card question
+                    Card answer
                     <Input id={'cards-create-answer'}
                            value={answer}
                            onChange={e => setAnswer(e.currentTarget.value)}/>

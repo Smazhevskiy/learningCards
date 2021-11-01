@@ -1,5 +1,4 @@
 import {
-    CardsPack,
     CardsPackResponse,
     DeleteCardsPackData,
     GetCardPacksQueryParams,

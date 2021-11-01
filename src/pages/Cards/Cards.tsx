@@ -19,9 +19,7 @@ export const Cards: FC = () => {
         cardsTotalCount,
         minGrade,
         maxGrade,
-        sortCardsMethod,
         packUserId,
-        currentGrade,
         countPerPage
     } = useTypedSelector(state => state.cards)
     const cardPacks = useTypedSelector(state => state.packs.cardPacks)
@@ -32,11 +30,13 @@ export const Cards: FC = () => {
 
     useEffect(() => {
         dispatch(setCurrentCardsPackID({id}))
-    }, [id])
+    }, [dispatch, id]) //id
 
     useEffect(() => {
         id && dispatch(fetchCards())
-    }, [page, pageCount, currentGrade, sortCardsMethod])
+    }, [dispatch, id])  // page, pageCount, currentGrade, sortCardsMethod
+
+
 
     useEffect(() => {
         paginationScrollTopRef.current?.scrollIntoView({behavior: 'smooth'})
@@ -46,9 +46,9 @@ export const Cards: FC = () => {
         <div>
             <h1 ref={paginationScrollTopRef}>Cards</h1>
             {currentCardsPack && <div style={{margin: '40px 0'}}>
-				<p>Pack owner: {currentCardsPack.user_name}</p>
-				<p>Pack name: {currentCardsPack.name}</p>
-			</div>}
+                <p>Pack owner: {currentCardsPack.user_name}</p>
+                <p>Pack name: {currentCardsPack.name}</p>
+            </div>}
 
             {id ? <>
                 <CardsSearch/>

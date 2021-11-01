@@ -1,9 +1,9 @@
 import {
-    Card,
     cardsAPI,
     CardsResponse,
     DeleteCardData,
-    GetCardsQueryParams, GradeData,
+    GetCardsQueryParams,
+    GradeData,
     NewCardData,
     UpdateCardData
 } from '../../api/cards-api'

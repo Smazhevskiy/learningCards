@@ -22,7 +22,7 @@ export const AddPackModal: FC = () => {
 
     return (
         <>
-            <Button onClick={() => onToggle()}>Add</Button>
+            <Button style={{background: 'mediumseagreen'}} onClick={() => onToggle()}>Add new pack</Button>
 
             <Modal open={isOpen} onClick={() => onToggle()}>
                 <label htmlFor={'packs-addPack'}>
@@ -36,7 +36,7 @@ export const AddPackModal: FC = () => {
                 <Checkbox checked={isPrivate} onChange={e => setIsPrivate(e.currentTarget.checked)}>
                     Set to private
                 </Checkbox>
-                <Button onClick={addPack}>Add</Button>
+                <Button style={{background: 'mediumseagreen'}} onClick={addPack}>Add</Button>
             </Modal>
         </>
     )
