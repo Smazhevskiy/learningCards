@@ -20,7 +20,9 @@ export const Cards: FC = () => {
         minGrade,
         maxGrade,
         packUserId,
-        countPerPage
+        countPerPage,
+        currentGrade,
+        sortCardsMethod
     } = useTypedSelector(state => state.cards)
     const cardPacks = useTypedSelector(state => state.packs.cardPacks)
     const userID = useTypedSelector(state => state.auth.userInfo?._id)
@@ -34,8 +36,7 @@ export const Cards: FC = () => {
 
     useEffect(() => {
         id && dispatch(fetchCards())
-    }, [dispatch, id])  // page, pageCount, currentGrade, sortCardsMethod
-
+    }, [page, pageCount, currentGrade, sortCardsMethod, id, dispatch])  // page, pageCount, currentGrade, sortCardsMethod
 
 
     useEffect(() => {
