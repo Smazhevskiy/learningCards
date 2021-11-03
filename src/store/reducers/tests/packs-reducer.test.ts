@@ -1,10 +1,12 @@
 import {
     PacksInitialState,
     packsReducer,
-    setCardPacks, setMinMaxCardsCount,
+    setMinMaxCardsCount,
     setPacksCountOnPage,
     setPacksCurrentPage,
-    setPacksTotalCount, setPrivatePacks, setSortCardsPackMethod
+    setPacksTotalCount,
+    setPrivatePacks,
+    setSortCardsPackMethod
 } from '../packs-reducer'
 
 let startState: PacksInitialState
@@ -18,7 +20,9 @@ beforeEach(() => {
         page: 1,
         pageCount: 5,
         privatePacks: false,
-        sortPacksMethod: '0cardsCount'
+        sortPacksMethod: '0cardsCount',
+        countPerPage:[10],
+        currentCardsCount:[40]
     }
 })
 
