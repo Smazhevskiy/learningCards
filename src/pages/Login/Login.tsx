@@ -28,9 +28,13 @@ export const Login: FC = () => {
     return (
         <div>
             <h1>Sign In</h1>
-
+            <div style={{marginBottom:'2rem'}}>
+                Account for the test: <br/>
+                email: nya-admin@nya.nya <br/>
+                password: 1qazxcvBG
+            </div>
             <form onSubmit={onSubmit}>
-                <label htmlFor='login-email'>
+                <label htmlFor="login-email">
                     Email
                     <Input id={'login-email'}
                            type={'email'}
@@ -39,7 +43,7 @@ export const Login: FC = () => {
                            onChange={e => setValues({...values, email: e.currentTarget.value})}/>
                 </label>
 
-                <label htmlFor='login-password'>
+                <label htmlFor="login-password">
                     Password
                     <Input id={'login-password'}
                            type={'password'}
@@ -56,7 +60,16 @@ export const Login: FC = () => {
 
                 <Button type={'submit'}>Login</Button>
 
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, textAlign: 'center', marginTop: 32}}>
+
+
+                <div style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: 16,
+                    textAlign: 'center',
+                    marginTop: 32
+                }}>
                     <Link to={PATH.PASSWORD_RECOVERY}><h4>Forgot your password?</h4></Link>
                     <Link to={PATH.REGISTRATION}><h4>Don’t have an account? Sign Up!</h4></Link>
                 </div>
