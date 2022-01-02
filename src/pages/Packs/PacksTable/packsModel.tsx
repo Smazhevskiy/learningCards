@@ -15,9 +15,11 @@ export const packsModel = (sort: (sort: string) => void, userID: string | undefi
                 <Sort sortBy={'name'} sortCallback={sort} sortMethod={sortMethod}>Pack Name</Sort>
             </th>,
         body: (item: CardsPack) =>
-            <td style={{maxWidth:'15rem', overflow:'hidden', padding:'0 10px'}} key={'name-cell-' + item._id}>
-                <Link to={PATH.CARDS + '/' + item._id}>{item.name}</Link>
-            </td>
+           <div style={{margin:'10px auto', }}>
+               <td style={{maxWidth:'15rem', overflow:'hidden', padding:'0 10px'}} key={'name-cell-' + item._id}>
+                   <Link to={PATH.CARDS + '/' + item._id}>{item.name}</Link>
+               </td>
+           </div>
     },
     {
         header: index =>
