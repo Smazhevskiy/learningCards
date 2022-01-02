@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/learningCards_App/static/css/main.d5db937e.chunk.css",
-    "main.js": "/learningCards_App/static/js/main.fcca6d25.chunk.js",
-    "main.js.map": "/learningCards_App/static/js/main.fcca6d25.chunk.js.map",
+    "main.js": "/learningCards_App/static/js/main.988dc091.chunk.js",
+    "main.js.map": "/learningCards_App/static/js/main.988dc091.chunk.js.map",
     "runtime-main.js": "/learningCards_App/static/js/runtime-main.2a6b1beb.js",
     "runtime-main.js.map": "/learningCards_App/static/js/runtime-main.2a6b1beb.js.map",
     "static/css/2.7fe95f8e.chunk.css": "/learningCards_App/static/css/2.7fe95f8e.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.7fe95f8e.chunk.css",
     "static/js/2.6a8bbbdc.chunk.js",
     "static/css/main.d5db937e.chunk.css",
-    "static/js/main.fcca6d25.chunk.js"
+    "static/js/main.988dc091.chunk.js"
   ]
 }
