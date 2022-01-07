@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/learningCards_App/static/css/main.e81576f3.chunk.css",
-    "main.js": "/learningCards_App/static/js/main.afc63074.chunk.js",
-    "main.js.map": "/learningCards_App/static/js/main.afc63074.chunk.js.map",
+    "main.css": "/learningCards_App/static/css/main.637d5d44.chunk.css",
+    "main.js": "/learningCards_App/static/js/main.5981d334.chunk.js",
+    "main.js.map": "/learningCards_App/static/js/main.5981d334.chunk.js.map",
     "runtime-main.js": "/learningCards_App/static/js/runtime-main.2a6b1beb.js",
     "runtime-main.js.map": "/learningCards_App/static/js/runtime-main.2a6b1beb.js.map",
     "static/css/2.7fe95f8e.chunk.css": "/learningCards_App/static/css/2.7fe95f8e.chunk.css",
@@ -10,14 +10,14 @@
     "static/js/2.6a8bbbdc.chunk.js.map": "/learningCards_App/static/js/2.6a8bbbdc.chunk.js.map",
     "index.html": "/learningCards_App/index.html",
     "static/css/2.7fe95f8e.chunk.css.map": "/learningCards_App/static/css/2.7fe95f8e.chunk.css.map",
-    "static/css/main.e81576f3.chunk.css.map": "/learningCards_App/static/css/main.e81576f3.chunk.css.map",
+    "static/css/main.637d5d44.chunk.css.map": "/learningCards_App/static/css/main.637d5d44.chunk.css.map",
     "static/js/2.6a8bbbdc.chunk.js.LICENSE.txt": "/learningCards_App/static/js/2.6a8bbbdc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2a6b1beb.js",
     "static/css/2.7fe95f8e.chunk.css",
     "static/js/2.6a8bbbdc.chunk.js",
-    "static/css/main.e81576f3.chunk.css",
-    "static/js/main.afc63074.chunk.js"
+    "static/css/main.637d5d44.chunk.css",
+    "static/js/main.5981d334.chunk.js"
   ]
 }
