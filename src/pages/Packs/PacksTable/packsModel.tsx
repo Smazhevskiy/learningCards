@@ -16,18 +16,18 @@ export const packsModel = (sort: (sort: string) => void, userID: string | undefi
             </th>,
         body: (item: CardsPack) =>
            <div style={{margin:'10px auto', }}>
-               <td style={{maxWidth:'15rem', overflow:'hidden', padding:'0 10px'}} key={'name-cell-' + item._id}>
+               <td  key={'name-cell-' + item._id}>
                    <Link to={PATH.CARDS + '/' + item._id}>{item.name}</Link>
                </td>
            </div>
     },
     {
         header: index =>
-            <th key={'userName-title-' + index}>
+            <th style={{width:'100px', overflow:'hidden', padding:'0 10px'}} key={'userName-title-' + index}>
                 <Sort sortBy={'user_name'} sortCallback={sort} sortMethod={sortMethod}>User Name</Sort>
             </th>,
         body: (item: CardsPack) =>
-            <td key={'name-cell-' + item.user_name}>{item.user_name}</td>
+            <td style={{maxWidth:'15rem', overflow:'hidden', padding:'0 10px'}} key={'name-cell-' + item.user_name}>{item.user_name}</td>
     },
     {
         header: index =>

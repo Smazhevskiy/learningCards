@@ -118,6 +118,7 @@ thead, tfoot {
 }
 
 tr {
+
 }
 
 tr:hover {
@@ -127,6 +128,8 @@ tr:hover {
 th, td {
     padding: 8px;
     position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .tablesButtonsCell {
